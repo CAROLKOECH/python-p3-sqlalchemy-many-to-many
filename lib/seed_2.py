@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from faker import Faker
 import random
 
@@ -19,11 +17,8 @@ if __name__ == '__main__':
 
     fake = Faker()
 
-    genres = ['action', 'adventure', 'strategy',
-        'puzzle', 'first-person shooter', 'racing']
-    platforms = ['nintendo 64', 'gamecube', 'wii', 'wii u', 'switch',
-        'playstation', 'playstation 2', 'playstation 3', 'playstation 4',
-        'playstation 5', 'xbox', 'xbox 360', 'xbox one', 'pc']
+    genres = ['action', 'adventure', 'strategy', 'puzzle', 'first-person shooter', 'racing']
+    platforms = ['nintendo 64', 'gamecube', 'wii', 'wii u', 'switch', 'playstation', 'playstation 2', 'playstation 3', 'playstation 4', 'playstation 5', 'xbox', 'xbox 360', 'xbox one', 'pc']
 
     games = []
     for i in range(50):
@@ -40,7 +35,6 @@ if __name__ == '__main__':
 
         games.append(game)
 
-
     users = []
     for i in range(25):
         user = User(
@@ -52,16 +46,14 @@ if __name__ == '__main__':
 
         users.append(user)
 
-
     reviews = []
     for game in games:
-        for i in range(random.randint(1,5)):
+        for i in range(random.randint(1, 5)):
             user = random.choice(users)
             if game not in user.games:
                 user.games.append(game)
                 session.add(user)
                 session.commit()
-            
             review = Review(
                 score=random.randint(0, 10),
                 comment=fake.sentence(),
